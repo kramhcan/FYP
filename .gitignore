@@ -1,5 +1,5 @@
 #ignore node modules
-./server/node_modules
+server/node_modules
 
-./Jupyter/.ipynb_checkpoints
-./Jupyter/data
+Jupyter/.ipynb_checkpoints
+Jupyter/data
