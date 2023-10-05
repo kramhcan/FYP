@@ -1,5 +1,3 @@
-#ignore node modules
-server/node_modules
-
-Jupyter/.ipynb_checkpoints
-Jupyter/data
+node_modules
+.ipynb_checkpoints
+.env
