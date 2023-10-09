@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Api
 import numpy as np
 import predictor
+import json
   
 # creating the flask app
 app = Flask(__name__)
@@ -12,13 +13,22 @@ model_path = '../Jupyter/my_model.pkl'
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    print(request.json)
     if request.method == 'POST':
-        data = request.json
-        values = list(data.values())
-        input_data = np.array(values)
-        result = predictor.predict(input_data, model_path)
-        return jsonify(result.tolist())   
+        try:
+            # Parse the JSON input
+            data = request.json
+            data = json.dumps(data)
+            values = list(json.loads(data).values())
+            input_data = np.array(values)
+            # Make the prediction
+            result = predictor.predict(model_path, input_data)
+        # Error Handling    
+        except json.JSONDecodeError as e:
+            return("Error decoding JSON: ", e)
+        except Exception as e:
+            return("Error: ", e) 
+        # Return the result
+        return jsonify({'result': result})
 
 @app.route('/test', methods=['GET'])
 def test():

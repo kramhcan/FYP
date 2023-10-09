@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
+app.use(express.json());
+
 //TODO: MongoDB integration and connection
 const mongoose = require("mongoose");
 
@@ -24,18 +26,12 @@ const user = new User({
 });
 
 // Define a route
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   // Insert the user into the database
-  user.save()
-    .then(() => {
-      res.send("User saved to database");
-    })
-    .catch((err) => {
-      res.status(500).send(err.message);
-    });
+  res.send("Hello World!");
 });
 
-app.get("/drop", (req, res) => {
+app.get("/drop", async (req, res) => {
   // Drop the user collection
   User.collection.drop()
     .then(() => {
@@ -47,13 +43,29 @@ app.get("/drop", (req, res) => {
 });
 
 // Login route
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   res.send("Hello World!");
 });
 
 // Register route
-app.post("/register", (req, res) => {
-  res.send("Hello World!");
+app.post("/register", async (req, res) => {
+  userData = req.body;
+  try{
+    const newUser = new User(userData);
+    await newUser.save();
+    res.status(201).json({
+      message: "User created successfully",
+      user: newUser
+    });
+  } catch (error) {
+    if (error.name === 'MongoError' && error.code === 11000) {
+      // This is a duplicate key error
+      res.status(409).json({ message: "Email already exists" });
+    } else {
+      // This is a different type of error
+      res.status(500).json({ message: error.message });
+    }
+  }
 });
 
 // Start the server
