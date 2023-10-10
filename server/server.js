@@ -15,19 +15,17 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
 //Import the User model
 const User = require("./models/userModel");
 
-// Testing the User model
-const user = new User({
-  name: 'Jane Doe',
-  dob: '01-01-2000',
-  email: 'janedoe@email.com',
-  password: 'password',
-  phone: 1234567890,
-  role: 'student'
-});
+// // Testing the User model
+// const user = new User({
+//   name: 'Jane Doe',
+//   dob: '01-01-2000',
+//   email: 'janedoe@email.com',
+//   password: 'password',
+//   phone: 1234567890,
+//   role: 'student'
+// });
 
-// Define a route
 app.get("/", async (req, res) => {
-  // Insert the user into the database
   res.send("Hello World!");
 });
 
@@ -44,7 +42,18 @@ app.get("/drop", async (req, res) => {
 
 // Login route
 app.post("/login", async (req, res) => {
-  res.send("Hello World!");
+  const { email, password } = req.body;
+  console.log(req.body);
+  try {
+    const user = await User.findOne({ email, password });
+    if (user) {
+      res.status(200).json({ message: "Login successful", user });
+    } else {
+      res.status(401).json({ message: "Invalid email or password" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 // Register route
@@ -59,13 +68,18 @@ app.post("/register", async (req, res) => {
     });
   } catch (error) {
     if (error.name === 'MongoError' && error.code === 11000) {
-      // This is a duplicate key error
+      // duplicate key error
       res.status(409).json({ message: "Email already exists" });
     } else {
       // This is a different type of error
       res.status(500).json({ message: error.message });
     }
   }
+});
+
+// Unknown route
+app.use((req, res) => {
+  res.status(404).send("Page not found");
 });
 
 // Start the server
