@@ -1,48 +1,50 @@
 const mongoose = require('mongoose');
 
 const userDataSchema = new mongoose.Schema({
-    user_id: {
+    user_email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
+      index: true
     },
     age: {
       type: String,
       required: true,
-      unique: true
     },
     gender: {
       type: String,
       required: true,
-      unique: true
     },
     chest_pain_type: {
-      type: String,
+      type: Number,
       required: true,
-      unique: true
     },
     colored_vessels_count: {
       type: Number,
       required: true,
-      unique: true
     },
     exercise_angina: {
-      type: Boolean,
+      type: Number,
       required: true,
-      unique: true
     },
     oldpeak: {
       type: Number,
       required: true,
-      unique: true
     },
-    password: {
-      type: String,
+    slope: {
+      type: Number,
       required: true,
-      unique: true
+    },
+    thal: {
+      type: Number,
+      required: true,
+    },
+    thalach: {
+      type: Number,
+      required: true,
     },
   });
 
-const User = mongoose.model('User_Data', userDataSchema);
+const User_Data = mongoose.model('User_Data', userDataSchema);
 
-module.exports = User;
+module.exports = User_Data;
