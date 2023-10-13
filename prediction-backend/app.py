@@ -13,6 +13,7 @@ model_path = '../Jupyter/my_model.pkl'
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    """Predict the result from the input data"""
     if request.method == 'POST':
         try:
             # Parse the JSON input
@@ -34,6 +35,7 @@ def predict():
 # Default route
 @app.errorhandler(404)
 def handle_404(e):
+    """ Default 404 route handler """
     # handle all other routes here
     return 'Not Found, but we HANDLED IT'
   
