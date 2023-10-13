@@ -17,6 +17,7 @@ def predict():
         try:
             # Parse the JSON input
             data = request.json
+            print("Request ::: ", data)
             data = json.dumps(data)
             values = list(json.loads(data).values())
             input_data = np.array(values)
@@ -30,13 +31,11 @@ def predict():
         # Return the result
         return jsonify({'result': result})
 
-@app.route('/test', methods=['GET'])
-def test():
-    return jsonify({'test': 'test'})
-
-@app.route('/', methods=['GET'])
-def index():
-    return jsonify({'default': 'Hello World!'})
+# Default route
+@app.errorhandler(404)
+def handle_404(e):
+    # handle all other routes here
+    return 'Not Found, but we HANDLED IT'
   
 # driver function
 if __name__ == '__main__':

@@ -22,16 +22,16 @@ app.get("/", async (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/drop", async (req, res) => {
-  // Drop the user collection
-  User.collection.drop()
-    .then(() => {
-      res.send("User collection dropped");
-    })
-    .catch((err) => {
-      res.status(500).send(err.message);
-    });
-});
+// app.get("/drop", async (req, res) => {
+//   // Drop the user collection
+//   User.collection.drop()
+//     .then(() => {
+//       res.send("User collection dropped");
+//     })
+//     .catch((err) => {
+//       res.status(500).send(err.message);
+//     });
+// });
 
 // Unknown route
 app.use((req, res) => {
