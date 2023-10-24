@@ -127,6 +127,7 @@ router.post("/insert", async (req, res) => {
   }
 });
 
+// view single user data route
 router.get("/view", async (req, res) => {
   try {
     const userData = await User.aggregate([
@@ -147,6 +148,7 @@ router.get("/view", async (req, res) => {
   }
 });
 
+// Get all users route
 router.get("/view_all", async (req, res) => {
   try {
     const userData = await User.aggregate([
@@ -166,6 +168,7 @@ router.get("/view_all", async (req, res) => {
   }
 });
 
+// prediction route
 router.get("/predict/:input", async (req, res) => {
   try {
     const email = req.params.input;
@@ -207,6 +210,21 @@ router.get("/predict/:input", async (req, res) => {
     res.status(500).json({ 
       message: "Internal server error",
       location: "first try",
+      error: error.message 
+    });
+  }
+});
+
+// Update user data route
+router.put("/update/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userData = await User_Data.findByIdAndUpdate(id, req.body, { new: true });
+    res.status(200).json({ userData });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ 
+      message: "Internal server error",
       error: error.message 
     });
   }

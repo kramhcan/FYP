@@ -51,6 +51,28 @@ router.get("/list", async (req, res) => {
   }
 });
 
-// TODO: Update & Delete
+// Update user route
+router.put("/update", async (req, res) => {
+  const { id } = req.body;
+  const { name, email, password } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { name, email, password },
+      { new: true }
+    );
+    if (user) {
+      res.status(200).json({ message: "User updated successfully", user });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// TODO: Delete
+
 
 module.exports = router;
+
