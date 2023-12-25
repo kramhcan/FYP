@@ -21,3 +21,13 @@ npm install
 ```
 npm run dev
 ```
+### Setup Angular frontend
+1. Navigate-to and install packages
+```
+cd frontend\webapp
+npm install
+```
+2. Run frontend server
+```
+ng serve
+```

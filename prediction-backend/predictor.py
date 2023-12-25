@@ -36,7 +36,7 @@ def predict(model_path, input_data):
     model = load_model(model_path)
     input_data = input_data_scaling(input_data)
     input_data = input_data.reshape(1, -1)
-    prediction = model.predict(input_data)
+    prediction = model.predict_proba(input_data)
     return prediction.tolist()
 
 # prediction_json = '{"age": 43,"ca_0": 0,"ca_1": 1,"ca_2": 0,"cp_1": 0,"cp_2": 1,"cp_3": 0,"exang": 0,"oldpeak": 1.9,"sex": 1,"slope_0": 0,"slope_1": 0,"thal_0": 0,"thal_2": 0,"thalach": 162}'
