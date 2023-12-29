@@ -13,18 +13,30 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+
 // Translation modules
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Routes
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from 'src/components/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { RegisterComponent } from 'src/app/components/register/register.component';
+import { SnackComponent } from './components/snack/snack.component';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRoute: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: '**',
@@ -38,7 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterComponent,
+    SnackComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +74,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

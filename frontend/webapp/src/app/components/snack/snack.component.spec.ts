@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PredictPageComponent } from './predict-page.component';
+import { SnackComponent } from './snack.component';
 
-describe('PredictPageComponent', () => {
-  let component: PredictPageComponent;
-  let fixture: ComponentFixture<PredictPageComponent>;
+describe('SnackComponent', () => {
+  let component: SnackComponent;
+  let fixture: ComponentFixture<SnackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PredictPageComponent]
+      imports: [SnackComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PredictPageComponent);
+    fixture = TestBed.createComponent(SnackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

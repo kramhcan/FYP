@@ -1,0 +1,38 @@
+.form-container {
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.child {
+    margin: 0 auto;
+    width: 50%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+p {
+    color: darkgray;
+}
+
+.mat-raised-button {
+    font-size: 1.5rem;
+}
+
+.logo {
+    width: 70%;
+}
+
+.mat-form-field {
+    width: 70vw;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
