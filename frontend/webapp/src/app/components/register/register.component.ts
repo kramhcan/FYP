@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoreService } from 'src/app/services/core.service';
 import { ApiService } from 'src/app/services/api.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class RegisterComponent {
   hide = true;
+
+  hidepass = true;
   readonly ROOT_URL = 'http://localhost:3000/user/';
   registerForm: FormGroup;
 
@@ -19,7 +22,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private coreService: CoreService
+    private coreService: CoreService,
+    private router: Router
   ) {
     this.registerForm = this.fb.group({
       name: '',
@@ -35,6 +39,10 @@ export class RegisterComponent {
     this.confirmPassword =  passwordC;
     console.log("Confirmation input: " + this.confirmPassword);
 
+    if (this.registerForm.invalid) {
+      return this.coreService.openSnackBar("Please fill all required fields", "Ok", "error");
+    }
+
     const formValue = this.registerForm.value;
     
     if (formValue.password != this.confirmPassword) {
@@ -44,4 +52,18 @@ export class RegisterComponent {
     console.log(this.registerForm.value);
   }
 
+  onSecondSubmit() {
+    console.log(this.registerForm.value);
+    this.apiService.post(this.ROOT_URL + 'register', this.registerForm.value).subscribe(
+      res => {
+        console.log(res);
+        this.coreService.openSnackBar(res.message, "Ok", "success");
+        this.router.navigate(['/dashboard']);
+      },
+      err => {
+        console.log(err);
+        this.coreService.openSnackBar(err.message, "Ok", "error");
+      }
+    );
+  }
 }

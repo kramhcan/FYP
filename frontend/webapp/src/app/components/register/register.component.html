@@ -14,7 +14,7 @@
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                    <input matInput [type]="hidepass ? 'password' : 'text'" placeholder="Password" formControlName="password">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -24,7 +24,7 @@
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" #passwordConfirmation>
+                    <input matInput [type]="hidepass ? 'password' : 'text'" placeholder="Password" #passwordConfirmation>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -43,37 +43,38 @@
         <div>
             <p>
                 <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="johndoe@email.com">
-                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="John Doe" formControlName="name">
+                    <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
+                    <mat-label>Date of birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob" />
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
-                    <mat-label>Confirm Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="confirmPassword">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="John Doe" formControlName="phone">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Occupation</mat-label>
+                    <input matInput placeholder="Student" formControlName="role">
                 </mat-form-field>
             </p>
         </div>
         <span styles="padding:15px"></span>
         <div>
-            <button mat-raised-button color="primary">
-                <mat-icon>login</mat-icon>
-                <span>Login</span>
+            <button mat-raised-button color="primary" (click)="onSecondSubmit()">
+                <span>Register</span>
             </button>
         </div>
     </div>
