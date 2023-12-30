@@ -7,10 +7,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 })
 export class ApiService {
 
-  // readonly ROOT_URL = "http://localhost:3000/";
-  // TODO: Properly configure and secure api path to proxy service
-
-  constructor(private http: HttpClient) //private jwtService: JwtService
+  constructor(private http: HttpClient) 
   {}
 
   private formatErrors(error: any) {

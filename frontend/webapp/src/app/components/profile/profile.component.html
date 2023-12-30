@@ -1,0 +1,124 @@
+<!-- FILEPATH: /e:/Projects/FYP/frontend/webapp/src/app/components/profile/profile.component.html -->
+
+<!-- BEGIN: User Profile Page -->
+<div class="profile-container">
+    <mat-card class="profile-card">
+        <mat-card-header>
+            <mat-card-title>User Profile</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <!-- User information -->
+            <mat-grid-list cols="4" rowHeight="5rem">
+                <mat-grid-tile>
+                    <div class="text-inside-grid">ID</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user._id }}</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">Name</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user.name }}</div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="5rem">
+                <mat-grid-tile>
+                    <div class="text-inside-grid">DoB</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user.dob }}</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">Email</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user.email }}</div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="5rem">
+                <mat-grid-tile>
+                    <div class="text-inside-grid">Phone Num</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user.phone }}</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">Role</div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside-grid">{{ user.role }}</div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div *ngIf="hasData">
+                <mat-divider></mat-divider>
+                <mat-grid-list cols="4" rowHeight="5rem">
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Age</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.age }}</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Gender</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.gender }}</div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="4" rowHeight="5rem">
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Chest Pain Type</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.chest_pain_type }}</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Colored Vessels Count</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.colored_vessels_count }}</div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="4" rowHeight="5rem">
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Exercise Angina</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.exercise_angina }}</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Oldpeak</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.oldpeak }}</div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="4" rowHeight="5rem">
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Slope</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.slope }}</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Thal</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.thal }}</div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="4" rowHeight="5rem">
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">Thalach</div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="text-inside-grid">{{ userData.thalach }}</div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<!-- END: User Profile Page -->

@@ -1,1 +1,32 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" class="form-container" (submit)="onFirstSubmit()"> 
+    <div class="child">
+        <div>
+            <h1>
+                Login
+            </h1>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="johndoe@email.com" formControlName="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hidepass ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hidepass = !hidepass" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hidepass">
+                        <mat-icon>{{hidepass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </p>
+        </div>
+        <span styles="padding:15px"></span>
+        <div>
+            <button mat-raised-button color="primary">
+                <span>Next</span>
+            </button>
+        </div>
+    </div>
+</form> 

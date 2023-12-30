@@ -1,0 +1,46 @@
+.form-container {
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-height: 100%;
+}
+
+.child {
+    margin: 0 auto;
+    width: 90%;
+    padding: 1.5rem;
+    /* border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    text-align: center;
+}
+
+.text-inside-grid {
+    position: absolute;
+    left: 1rem;
+    text-align: left;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.group-name-field{
+    padding-top:1rem;
+    width: 100%;
+}
+
+.button-container{
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+.permission-card{
+    width: 90%;
+    min-height: 90%;
+}
+
+mat-card-header{
+    padding-bottom: 10px;
+}

@@ -7,5 +7,6 @@
     "sidenav.dashboard": "Dashboard",
     "sidenav.admin": "Admin",
     "options.profile": "Profile",
-    "options.logout": "Logout"
+    "options.logout": "Logout",
+    "options.login": "Login"
 }

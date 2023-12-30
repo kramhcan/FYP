@@ -6,7 +6,7 @@
         <mat-divider></mat-divider>
         <mat-nav-list>
             <a mat-list-item routerLink="/dashboard"> Dashboard </a>
-            <a mat-list-item routerLink="/register"> Register </a>
+            <button mat-list-item (click)="testUser()"> Test User </button>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -50,13 +50,17 @@
 
 <!-- Account menu items-->
 <mat-menu #accountMenu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item *ngIf="!isLoggedIn" routerLink="/login">
+        <mat-icon fontIcon="login" aria-hidden="false" aria-label="account-circle icon"></mat-icon>
+        <span>{{ "options.login" | translate }}</span>
+    </button>
+    <button mat-menu-item *ngIf="isLoggedIn" routerLink="/profile">
         <mat-icon fontIcon="account_circle" aria-hidden="false" aria-label="account-circle icon"></mat-icon>
         <span>{{ "options.profile" | translate }}</span>
     </button>
-    <mat-divider></mat-divider>
-    <!-- <button mat-menu-item (click)="logout()">
+    <mat-divider *ngIf="isLoggedIn"></mat-divider>
+    <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">
         <mat-icon class="red-icon" fontIcon="logout" aria-hidden="false" aria-label="account-circle icon"></mat-icon>
         <span>{{ "options.logout" | translate }}</span>
-    </button> -->
+    </button>
 </mat-menu>

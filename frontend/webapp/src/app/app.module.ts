@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +33,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { requestInterceptor } from './request.interceptor';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoute: Routes = [
   {
@@ -40,6 +44,14 @@ const appRoute: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: '**',
@@ -56,6 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     RegisterComponent,
     SnackComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +98,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
+    MatGridListModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: requestInterceptor, multi: true }
