@@ -18,6 +18,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 // Translation modules
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -35,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { requestInterceptor } from './request.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PredictComponent } from './components/predict/predict.component';
 
 const appRoute: Routes = [
   {
@@ -54,6 +57,10 @@ const appRoute: Routes = [
     component: ProfileComponent
   },
   {
+    path: 'predict',
+    component: PredictComponent
+  },
+  {
     path: '**',
     redirectTo: 'dashboard'
   }
@@ -69,7 +76,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     SnackComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    PredictComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +108,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatNativeDateModule,
     MatCardModule,
     MatGridListModule,
-
+    MatTooltipModule,
+    MatSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: requestInterceptor, multi: true }

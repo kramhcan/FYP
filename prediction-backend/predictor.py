@@ -22,7 +22,7 @@ def load_model(model_path):
 
 def input_data_scaling(input_data):
     """Standardize the input data"""
-    # Assuming your model takes a numpy array as input
+    # model takes a numpy array as input
     input_data = np.array(input_data)
     input_data[0]=standardize_age(input_data[0])
     input_data[8]=standardize_oldpeak(input_data[8])
@@ -32,7 +32,7 @@ def input_data_scaling(input_data):
 
 def predict(model_path, input_data):
     """Predict the result"""
-    # Assuming your model takes a numpy array as input
+    # model takes a numpy array as input
     model = load_model(model_path)
     input_data = input_data_scaling(input_data)
     input_data = input_data.reshape(1, -1)

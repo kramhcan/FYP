@@ -30,7 +30,7 @@ def predict():
         except Exception as e:
             return("Error: ", e) 
         # Return the result
-        return jsonify({'result': result})
+        return jsonify(result)
 
 # Default route
 @app.errorhandler(404)

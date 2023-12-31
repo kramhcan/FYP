@@ -1,1 +1,102 @@
-<p>predict works!</p>
+<form [formGroup]="predictForm" (submit)="submitForm()">
+    <mat-card class="card">
+        <mat-card-header style="margin:auto">
+            <mat-card-title>
+                <h1>Personal Information</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-grid-list cols="2" rowHeight="6rem">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Age</mat-label>
+                    <input matInput formControlName="age">
+                    <mat-icon matTooltip="Your age" matSuffix>info</mat-icon>
+                    <mat-hint>years</mat-hint>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="Your gender" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Chest Pain Type</mat-label>
+                    <mat-select formControlName="chest_pain_type">
+                        <mat-option value=1>Atypical Angina</mat-option>
+                        <mat-option value=2>Non-anginal Pain</mat-option>
+                        <mat-option value=3>Asymptomatic</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="Type of chest pain" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Colored Vessels</mat-label>
+                    <mat-select formControlName="colored_vessels_count">
+                        <mat-option value=0>1</mat-option>
+                        <mat-option value=1>2</mat-option>
+                        <mat-option value=2>3</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="Number of major vessels colored by flouroscopy" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Exercise Angina</mat-label>
+                    <mat-select formControlName="exercise_angina">
+                        <mat-option value=1>Yes</mat-option>
+                        <mat-option value=0>No</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="Presence of exercise induced angina" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Oldpeak</mat-label>
+                    <input matInput formControlName="oldpeak">
+                    <mat-icon matTooltip="ST depression induced by exercise relative to rest" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Slope</mat-label>
+                    <mat-select formControlName="slope">
+                        <mat-option value=0>Upsloping</mat-option>
+                        <mat-option value=1>Flat</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="The slope of the peak exercise ST segment" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Thal</mat-label>
+                    <mat-select formControlName="thal">
+                        <mat-option value=0>Normal</mat-option>
+                        <mat-option value=2>Reversable Defect</mat-option>
+                    </mat-select>
+                    <mat-icon matTooltip="Thallium stress test result" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Thalach</mat-label>
+                    <input matInput formControlName="thalach">
+                    <mat-icon matTooltip="Maximum heart rate achieved" matSuffix>info</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <span styles="padding:15px"></span>
+        <div style="float: right;">
+            <button mat-raised-button color="primary">
+                <span>Next</span>
+            </button>
+        </div>
+    </mat-card>
+</form>

@@ -41,6 +41,7 @@ export class UserService {
     this.userData.next(userData);
     console.log("setUserData: " + JSON.stringify(userData));
     localStorage.setItem(this.localStorageKey2, JSON.stringify(userData));
+    this.router.navigate(['/dashboard']);
   }
 
   requestUserData() {
@@ -61,6 +62,7 @@ export class UserService {
 
   //For components
   getUserData(): Observable<string | null> {
+    console.log("GETUSERDATAHERE: " + localStorage.getItem(this.localStorageKey2));
     return of(localStorage.getItem(this.localStorageKey2));
   }
 
@@ -68,6 +70,20 @@ export class UserService {
     return of(localStorage.getItem(this.localStorageKey));
   }
 
+  updateLocalUserData(email: any) {
+    const params = new HttpParams().set('email', email);
+    if (email) {
+      this.apiService.get(this.ROOT_URL + 'user_data/view', params).subscribe(
+      res => {
+        console.log(res);
+        this.setUserData(res);
+      },
+      err => {
+        console.log(err);
+      }
+      );
+    }
+  }
 
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.ROOT_URL}user/login`, credentials).pipe(

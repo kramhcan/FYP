@@ -230,6 +230,4 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
-// TODO: Update & Delete
-
 module.exports = router;
