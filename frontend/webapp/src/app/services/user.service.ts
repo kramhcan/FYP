@@ -101,7 +101,8 @@ export class UserService {
     this.setUserData(null);
     localStorage.removeItem(this.localStorageKey);
     localStorage.removeItem(this.localStorageKey2);
-    this.router.navigate(['/login']);
+    localStorage.removeItem('prediction');
+    this.router.navigate(['/dashboard']);
   }
   
 }
