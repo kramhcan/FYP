@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CoreService } from 'src/app/services/core.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-predict',
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 
 export class PredictComponent implements OnInit {
   predictForm: FormGroup;
-  private readonly ROOT_URL = 'http://localhost:3000/';
+  private readonly ROOT_URL = environment.apiUrl;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,7 +75,9 @@ export class PredictComponent implements OnInit {
 
   predict() {
     // console.log(this.predictForm.value);
-    return this.apiService.get(this.ROOT_URL + 'user_data/predict/' + this.userDataConv.body.userData[0].email, this.predictForm.value).subscribe(
+    console.log("Form Value: " + JSON.stringify(this.predictForm.value));
+    console.log("User Data: " + JSON.stringify(this.userDataConv.body.userData[0].email));
+    return this.apiService.get(this.ROOT_URL + 'user_data/predict/' + this.userDataConv.body.userData[0].email).subscribe(
       res => {
         console.log(res.body.response[0]);
         localStorage.setItem('prediction', JSON.stringify(res.body.response[0]));
@@ -97,6 +100,8 @@ export class PredictComponent implements OnInit {
   }
 
   update() {
+    // console.log("Form Value: " + JSON.stringify(this.predictForm.value));
+    // console.log("User Data: " + JSON.stringify(this.userDataConv.body.userData[0].user_data._id));
     this.apiService.put(this.ROOT_URL + 'user_data/update/' + this.userDataConv.body.userData[0].user_data._id, this.predictForm.value).subscribe(
       res => {
         console.log(res);

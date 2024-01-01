@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CoreService } from 'src/app/services/core.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
   hidepass = true;
-  readonly ROOT_URL = 'http://localhost:3000/user/';
+  readonly ROOT_URL = environment.apiUrl+'user/';
   loginForm: FormGroup;
 
   confirmPassword: string = '';

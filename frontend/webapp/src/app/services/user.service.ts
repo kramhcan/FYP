@@ -7,12 +7,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserData } from '../models/user_datas.model';
 import { CombinedModel } from '../models/combined.model';
 import { Router } from '@angular/router';
+import { environment } from 'src/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly ROOT_URL = 'http://localhost:3000/';
+  private readonly ROOT_URL = environment.apiUrl;
   private userSubject = new BehaviorSubject<User | null>(null); 
   private userData = new BehaviorSubject<CombinedModel | null>(null); 
   private userEmail: string | null = null;

@@ -4,6 +4,7 @@ import { CoreService } from 'src/app/services/core.service';
 import { ApiService } from 'src/app/services/api.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent {
   hide = true;
 
   hidepass = true;
-  readonly ROOT_URL = 'http://localhost:3000/user/';
+  readonly ROOT_URL = environment.apiUrl;
   registerForm: FormGroup;
 
   confirmPassword: string = '';
@@ -54,7 +55,7 @@ export class RegisterComponent {
 
   onSecondSubmit() {
     console.log(this.registerForm.value);
-    this.apiService.post(this.ROOT_URL + 'register', this.registerForm.value).subscribe(
+    this.apiService.post(this.ROOT_URL + 'user/register', this.registerForm.value).subscribe(
       res => {
         console.log(res);
         this.coreService.openSnackBar(res.message, "Ok", "success");

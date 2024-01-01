@@ -26,9 +26,15 @@ def predict():
             result = predictor.predict(model_path, input_data)
         # Error Handling    
         except json.JSONDecodeError as e:
-            return("Error decoding JSON: ", e)
+            print(f"Exception: {e}")
+            error_response = jsonify({'error': 'Internal Server Error'})
+            error_response.status_code = 500
+            return error_response
         except Exception as e:
-            return("Error: ", e) 
+            print(f"Exception: {e}")
+            error_response = jsonify({'error': 'Internal Server Error'})
+            error_response.status_code = 500
+            return error_response
         # Return the result
         return jsonify(result)
 
