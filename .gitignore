@@ -4,3 +4,4 @@ node_modules
 __pycache__
 environments.ts
 ```
+frontend/webapp/src/environment.ts
