@@ -1,6 +1,6 @@
 # FYP
 ## MEAN + Flask for model prediction
-
+*** THE ROUTES CONFIGURATION CHANGED AFTER THE DEPLOYMENT COMMIT, I FORGOT TO OMMIT THOSE CHANGES ***
 ### Setup Flask backend
 1. Navigate-to and install required packages
 ```
