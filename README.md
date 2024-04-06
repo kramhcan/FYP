@@ -1,7 +1,17 @@
 # FYP
 This is my final year project at Asia Pacific University
-## MEAN + Flask for model prediction
-*** THE ROUTES CONFIGURATION CHANGED AFTER THE DEPLOYMENT COMMIT, I FORGOT TO OMMIT THOSE CHANGES ***
+## MEAN app + Flask for model prediction
+
+### Summary   
+The topic I chose for my Final Year Project at Asia Pacific University is Heart Disease Prediction Using Machine Learning Models.  
+Instead of taking the easy route of just building a model for heart disease prediction, I decided to test the skills I gained at my previous internships and build a MEAN application.  
+Regrettably, I did bite off more than I could chew as I decided to attempt to deploy my model through AWS with no prior experience, causing me to spend some time figuring out how to do so.  
+However, I do believe I managed to achieve what I set out to build, albeit a tad unrefined. And it was a good learning experience.  
+
+Dataset used for model building:  
+https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci/data
+
+## Notes for self
 ### Setup Flask backend
 1. Navigate-to and install required packages
 ```
